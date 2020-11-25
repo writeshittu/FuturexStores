@@ -7,7 +7,7 @@ import {
   GET_ITEMS,
   ADD_TO_CARTS,
   DELETE_ITEM,
-  CLEAR_CART,
+  GET_TOTAL,
   INCREASE_CART_ITEM,
   DECREASE_CART_ITEM,
   SET_ALERT,
@@ -28,6 +28,8 @@ const ProductState = (props) => {
     loading: true,
     items: [],
     error: null,
+    TotalAmmountToPay: 0,
+    inCartLength: 0,
   };
   const [state, dispatch] = useReducer(productReducer, initialState);
   //GET CONTACTS
@@ -53,24 +55,19 @@ const ProductState = (props) => {
     dispatch({ type: DELETE_ITEM, payload: id });
   };
 
-  //update contact
-  // const updateContact = async (contact) => {
-  //   const config = {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-  //   try {
-  //     const res = await axios.put(
-  //       `/api/contact/${contact._id}`,
-  //       contact,
-  //       config
-  //     );
-  //     dispatch({ type: UPDATE_CONTACT, payload: res.data });
-  //   } catch (err) {
-  //     dispatch({ type: ITEM_ERROR, payload: err.response.msg });
-  //   }
-  // };
+  //decrease cart
+  const decreaseCart = (item) => {
+    dispatch({ type: DECREASE_CART_ITEM, payload: item });
+  };
+
+  const amountToPay = (item) => {
+    dispatch({ type: GET_TOTAL, payload: item });
+  };
+
+  useEffect(() => {
+    setCartItemsCount(getCartItemsCount(cartItems));
+    setCartTotal(getCartTotal(cartItems));
+  }, [cartItems]);
 
   //Clear Contact
   // const clearContacts = () => dispatch({ type: CLEAR_CONTACTS });
@@ -103,10 +100,13 @@ const ProductState = (props) => {
         items: state.items,
         filtered: state.filtered,
         error: state.error,
+        inCartLength: state.inCartLength,
+        TotalAmountToPay: state.TotalAmountToPay,
         getItems,
         addToCart,
         deleteItem,
-        // clearContacts,
+        decreaseCart,
+        amountToPay,
         // clearCurrent,
         // setCurrent,
         // updateContact,

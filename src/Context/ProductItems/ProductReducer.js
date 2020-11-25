@@ -14,6 +14,7 @@ import {
   ITEM_ERROR,
   CLEAR_ERRORS,
 } from "../Types";
+import { addItemToCart, decreaseItem } from "../../utils/cart.utils";
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 
@@ -26,33 +27,29 @@ export default (state, action) => {
         loading: false,
       };
     case ADD_TO_CARTS:
-      console.log(state.cart);
-      console.log(action.payload);
-
       return {
         ...state,
+        cart: addItemToCart(state.cart, action.payload),
         // cart:localStorage.setItem("inCart", JSON.stringify([action.payload, ...state.cart])),
-        cart: [action.payload, ...state.cart],
-        inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
+        // cart: [action.payload, ...state.cart],
+        // inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
         loading: false,
       };
     case DELETE_ITEM:
-      localStorage.setItem("inCart", JSON.stringify(state.cart));
+      // localStorage.setItem("inCart", JSON.stringify(state.cart));
       console.log("hit me");
       return {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload),
-        inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
+        // inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
         loading: false,
       };
-    // case UPDATE_CONTACT:
-    //   return {
-    //     ...state,
-    //     contacts: state.contacts.map((contact) =>
-    //       contact._id === action.payload._id ? action.payload : contact
-    //     ),
-    //     loading: false,
-    //   };
+    case DECREASE_CART_ITEM:
+      return {
+        ...state,
+        cart: decreaseItem(state.cart, action.payload),
+        loading: false,
+      };
     // case DELETE_CONTACT:
     //   return {
     //     ...state,
