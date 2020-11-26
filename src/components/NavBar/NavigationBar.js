@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import fxlogo from "../../logo/fxlogo.png";
 import ProductContext from "../../Context/ProductItems/ProductContext";
@@ -6,7 +6,6 @@ import "./Navbar.css";
 
 const NavBar = () => {
   const [showNav, setShowNav] = useState(false);
-  const [totalQty, setTotalQty] = useState("0");
 
   const productContext = useContext(ProductContext);
 

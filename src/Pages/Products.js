@@ -6,7 +6,7 @@ import "antd/dist/antd.css";
 
 const Products = () => {
   const productContext = useContext(ProductContext);
-  const { items, filtered, getItems, loading } = productContext;
+  const { items, getItems, loading } = productContext;
 
   useEffect(() => {
     getItems();
