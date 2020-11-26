@@ -9,13 +9,12 @@ import {
   DELETE_ITEM,
   GET_TOTAL,
   DECREASE_CART_ITEM,
-  AUTH_ERROR,
   GET_CART_LENGTH,
 } from "../Types";
 
 const ProductState = (props) => {
   const initialState = {
-    inCart: localStorage.getItem("inCart"),
+    inCart: JSON.parse(window.localStorage.getItem("inCart")),
     cart: [],
     filtered: null,
     loading: true,

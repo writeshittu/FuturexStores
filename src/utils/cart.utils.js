@@ -5,10 +5,10 @@ export const addItemToCart = (cart, itemToAdd) => {
       item.id === itemToAdd.id ? { ...item, quantity: item.quantity + 1 } : item
     );
   }
-  localStorage.setItem(
-    "inCart",
-    JSON.stringify([...cart, { ...itemToAdd, quantity: 1 }])
-  );
+  // localStorage.setItem(
+  //   "inCart",
+  //   JSON.stringify([...cart, { ...itemToAdd, quantity: 1 }])
+  // );
   return [...cart, { ...itemToAdd, quantity: 1 }];
 };
 

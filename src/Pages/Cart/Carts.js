@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ProductContext from "../../Context/ProductItems/ProductContext";
@@ -12,16 +12,16 @@ const Carts = () => {
   const {
     deleteItem,
     decreaseCart,
-    amountToPay,
+    // amountToPay,
     addToCart,
-    TotalAmmountToPay,
+    // TotalAmmountToPay,
     cart,
   } = productContext;
 
-  const [inCart, setinCart] = useState([]);
+  // const [inCart, setinCart] = useState([]);
 
   useEffect(() => {
-    setinCart(JSON.parse(window.localStorage.getItem("inCart")));
+    // setinCart(JSON.parse(window.localStorage.getItem("inCart")));
     getAmountToPay(cart);
   }, [cart]);
 

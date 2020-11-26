@@ -5,8 +5,6 @@ import {
   DECREASE_CART_ITEM,
   GET_TOTAL,
   GET_CART_LENGTH,
-  AUTH_ERROR,
-  CLEAR_ERRORS,
 } from "../Types";
 import {
   addItemToCart,
@@ -31,7 +29,10 @@ export default (state, action) => {
         cart: addItemToCart(state.cart, action.payload),
         // cart:localStorage.setItem("inCart", JSON.stringify([action.payload, ...state.cart])),
         // cart: [action.payload, ...state.cart],
-        // inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
+        inCart: localStorage.setItem(
+          "inCart",
+          JSON.stringify(addItemToCart(state.cart, action.payload))
+        ),
         // loading: false,
         TotalAmountToPay: getAmountToPay(state.cart),
       };
@@ -41,6 +42,7 @@ export default (state, action) => {
       return {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload),
+        inCart: state.inCart.filter((item) => item.id !== action.payload),
         // inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
         TotalAmmountToPay: getAmountToPay(state.cart),
       };
@@ -48,6 +50,7 @@ export default (state, action) => {
       return {
         ...state,
         cart: decreaseItem(state.cart, action.payload),
+        inCart: decreaseItem(state.inCart, action.payload),
         loading: false,
       };
     case GET_TOTAL:
