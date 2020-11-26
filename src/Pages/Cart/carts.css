@@ -4,3 +4,12 @@
 .pointer {
   cursor: pointer;
 }
+.no-item {
+  height: 100vh;
+  position: relative;
+}
+
+.no-itembtn {
+  position: absolute;
+  top: 250px;
+}

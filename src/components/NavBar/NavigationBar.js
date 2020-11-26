@@ -46,14 +46,17 @@ const NavBar = () => {
         </div>
         <span className="nav-item mr-auto" style={{ position: "relative" }}>
           <Link className="nav-link" to="/cart">
-            <i className="fas fa-luggage-cart fa-2x"></i>
+            <i className="fas fa-shopping-cart fa-2x"></i>
+
+            {cart.length && (
+              <p
+                className="badge badge-danger"
+                style={{ position: "absolute", top: "-2px", right: "35PX" }}
+              >
+                {cart.length}
+              </p>
+            )}
           </Link>
-          <p
-            className="badge badge-danger"
-            style={{ position: "absolute", top: "-2px", right: "35PX" }}
-          >
-            {cart.length ? cart.length : "0"}
-          </p>
         </span>
         <button
           className="navbar-toggler"

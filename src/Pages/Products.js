@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from "react";
 import ProductCard from "../components/Productcard/ProductCard";
 import ProductContext from "../Context/ProductItems/ProductContext";
+import { Skeleton } from "antd";
+import "antd/dist/antd.css";
 
 const Products = () => {
   const productContext = useContext(ProductContext);
@@ -12,7 +14,13 @@ const Products = () => {
   }, []);
 
   if (items !== null && loading) {
-    return <h4>Loading ...</h4>;
+    return (
+      <div className="container">
+        <Skeleton active />
+        <br />
+        <Skeleton active />
+      </div>
+    );
   }
 
   //   const [item, setItem] = useState([]);

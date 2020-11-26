@@ -12,7 +12,7 @@ const ProductCard = ({ item }) => {
 
   return (
     <div className="col-lg-2 col-sm m-2 ">
-      <Card className="">
+      <Card className="cardShadow">
         <div className="embed-responsive embed-responsive-1by1">
           <img
             className="card-img p-2 grow embed-responsive-item "

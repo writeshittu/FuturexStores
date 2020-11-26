@@ -30,5 +30,12 @@ export const decreaseItem = (cart, itemToRemove) => {
 export const getCartLength = (cart) =>
   cart.reduce((allQty, item) => allQty + item.quantity, 0);
 
-export const getAmountToPay = (cart) =>
-  cart.reduce((allQty, item) => allQty + item.quantity * item.price, 0);
+export const getAmountToPay = (cart) => {
+  let total;
+  cart.reduce(
+    (allQty, item) => (total = allQty + item.quantity * item.price),
+    0
+  );
+  // console.log(total);
+  localStorage.setItem("total", total);
+};

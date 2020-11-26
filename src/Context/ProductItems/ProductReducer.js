@@ -2,19 +2,18 @@ import {
   GET_ITEMS,
   ADD_TO_CARTS,
   DELETE_ITEM,
-  CLEAR_CART,
-  INCREASE_CART_ITEM,
   DECREASE_CART_ITEM,
-  SET_ALERT,
-  REMOVE_ALERT,
+  GET_TOTAL,
+  GET_CART_LENGTH,
   AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-  ITEM_ERROR,
   CLEAR_ERRORS,
 } from "../Types";
-import { addItemToCart, decreaseItem } from "../../utils/cart.utils";
+import {
+  addItemToCart,
+  decreaseItem,
+  getAmountToPay,
+  getCartLength,
+} from "../../utils/cart.utils";
 
 /* eslint import/no-anonymous-default-export: [2, {"allowArrowFunction": true}] */
 
@@ -33,7 +32,8 @@ export default (state, action) => {
         // cart:localStorage.setItem("inCart", JSON.stringify([action.payload, ...state.cart])),
         // cart: [action.payload, ...state.cart],
         // inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
-        loading: false,
+        // loading: false,
+        TotalAmountToPay: getAmountToPay(state.cart),
       };
     case DELETE_ITEM:
       // localStorage.setItem("inCart", JSON.stringify(state.cart));
@@ -42,7 +42,7 @@ export default (state, action) => {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload),
         // inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
-        loading: false,
+        TotalAmmountToPay: getAmountToPay(state.cart),
       };
     case DECREASE_CART_ITEM:
       return {
@@ -50,31 +50,17 @@ export default (state, action) => {
         cart: decreaseItem(state.cart, action.payload),
         loading: false,
       };
-    // case DELETE_CONTACT:
-    //   return {
-    //     ...state,
-    //     contacts: state.contacts.filter(
-    //       (contact) => contact._id !== action.payload
-    //     ),
-    //     loading: false,
-    //   };
-    // case CLEAR_CONTACTS:
-    //   return {
-    //     ...state,
-    //     current: null,
-    //     filtered: null,
-    //     error: null,
-    //   };
-    // case SET_CURRENT:
-    //   return {
-    //     ...state,
-    //     current: action.payload,
-    //   };
-    // case CLEAR_CURRENT:
-    //   return {
-    //     ...state,
-    //     current: null,
-    //   };
+    case GET_TOTAL:
+      return {
+        ...state,
+        TotalAmmountToPay: getAmountToPay(state.cart),
+      };
+    case GET_CART_LENGTH:
+      return {
+        ...state,
+        inCartLength: getCartLength(state.cart),
+      };
+
     // case FILTER_CONTACT:
     //   return {
     //     ...state,

@@ -8,16 +8,9 @@ import {
   ADD_TO_CARTS,
   DELETE_ITEM,
   GET_TOTAL,
-  INCREASE_CART_ITEM,
   DECREASE_CART_ITEM,
-  SET_ALERT,
-  REMOVE_ALERT,
   AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-  ITEM_ERROR,
-  CLEAR_ERRORS,
+  GET_CART_LENGTH,
 } from "../Types";
 
 const ProductState = (props) => {
@@ -28,7 +21,7 @@ const ProductState = (props) => {
     loading: true,
     items: [],
     error: null,
-    TotalAmmountToPay: 0,
+    TotalAmountToPay: 0,
     inCartLength: 0,
   };
   const [state, dispatch] = useReducer(productReducer, initialState);
@@ -60,26 +53,22 @@ const ProductState = (props) => {
     dispatch({ type: DECREASE_CART_ITEM, payload: item });
   };
 
+  //Determine Amount to pay
+
   const amountToPay = (item) => {
     dispatch({ type: GET_TOTAL, payload: item });
   };
 
-  useEffect(() => {
-    setCartItemsCount(getCartItemsCount(cartItems));
-    setCartTotal(getCartTotal(cartItems));
-  }, [cartItems]);
+  //Items in Cart
 
-  //Clear Contact
-  // const clearContacts = () => dispatch({ type: CLEAR_CONTACTS });
+  const itemInCart = (item) => {
+    dispatch({ type: GET_CART_LENGTH, payload: item });
+  };
 
-  //set current contact
-  // const setCurrent = (contact) => {
-  //   console.log(contact);
-  //   dispatch({ type: SET_CURRENT, payload: contact });
-  // };
-
-  //clear current contact
-  // const clearCurrent = () => dispatch({ type: CLEAR_CURRENT });
+  // useEffect(() => {
+  //   setCartItemsCount(getCartItemsCount(cartItems));
+  //   setCartTotal(getCartTotal(cartItems));
+  // }, [cartItems]);
 
   //Filter contact
   // const filterContact = (text) => {
@@ -107,6 +96,7 @@ const ProductState = (props) => {
         deleteItem,
         decreaseCart,
         amountToPay,
+        itemInCart,
         // clearCurrent,
         // setCurrent,
         // updateContact,
