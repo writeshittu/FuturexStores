@@ -1,12 +1,13 @@
 import React from "react";
 import PayWithStripe from "react-stripe-checkout";
 
-const PayWithStripeBtn = ({ price }) => {
+const PayWithStripeBtn = ({ price, props }) => {
   const amountToPay = price * 100;
   const publishablekey =
     "pk_test_51HrXzAC7pxoyF2hAGJry7eT2u9yz1QX0qFrxEHZfZ4RTA5TWVmMOEZVHydUARPjEUmEmtVsG1GVg8lseAssusjNI00fTZXUwHY";
   const onToken = (token) => {
     alert("Payment Successful...Thank you!!!");
+    window.location.href = "/";
   };
 
   return (

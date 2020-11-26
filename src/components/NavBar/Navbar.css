@@ -2,12 +2,14 @@ nav {
   font-size: 20px;
   /* font-weight: bold; */
   color: white;
+  background-color: #2dcc5d !important;
+  border-bottom: 1px solid;
 }
 
 a {
   text-decoration: none;
   color: white !important;
 }
-i {
+/* i {
   color: white;
-}
+} */

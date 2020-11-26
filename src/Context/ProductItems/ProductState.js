@@ -43,8 +43,8 @@ const ProductState = (props) => {
   };
 
   //Delete contact
-  const deleteItem = (id) => {
-    dispatch({ type: DELETE_ITEM, payload: id });
+  const deleteItem = (item) => {
+    dispatch({ type: DELETE_ITEM, payload: item });
   };
 
   //decrease cart

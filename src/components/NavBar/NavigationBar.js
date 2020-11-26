@@ -10,13 +10,14 @@ const NavBar = () => {
   const productContext = useContext(ProductContext);
 
   const { cart } = productContext;
+  // const cartLength = JSON.parse(window.localStorage.getItem("inCart"));
 
   const toggleNav = () => {
     setShowNav(!showNav);
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-info">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <img
@@ -47,7 +48,7 @@ const NavBar = () => {
           <Link className="nav-link" to="/cart">
             <i className="fas fa-shopping-cart fa-2x"></i>
 
-            {cart.length && (
+            {cart && (
               <p
                 className="badge badge-danger"
                 style={{ position: "absolute", top: "-2px", right: "35PX" }}

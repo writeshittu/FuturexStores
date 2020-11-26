@@ -8,6 +8,7 @@ import {
 } from "../Types";
 import {
   addItemToCart,
+  filterItemFromCart,
   decreaseItem,
   getAmountToPay,
   getCartLength,
@@ -27,30 +28,19 @@ export default (state, action) => {
       return {
         ...state,
         cart: addItemToCart(state.cart, action.payload),
-        // cart:localStorage.setItem("inCart", JSON.stringify([action.payload, ...state.cart])),
-        // cart: [action.payload, ...state.cart],
-        inCart: localStorage.setItem(
-          "inCart",
-          JSON.stringify(addItemToCart(state.cart, action.payload))
-        ),
-        // loading: false,
         TotalAmountToPay: getAmountToPay(state.cart),
       };
     case DELETE_ITEM:
-      // localStorage.setItem("inCart", JSON.stringify(state.cart));
-      console.log("hit me");
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload),
-        inCart: state.inCart.filter((item) => item.id !== action.payload),
-        // inCart: localStorage.setItem("inCart", JSON.stringify(state.cart)),
+        cart: filterItemFromCart(state.cart, action.payload),
         TotalAmmountToPay: getAmountToPay(state.cart),
       };
     case DECREASE_CART_ITEM:
       return {
         ...state,
         cart: decreaseItem(state.cart, action.payload),
-        inCart: decreaseItem(state.inCart, action.payload),
+        // inCart: decreaseItem(state.inCart, action.payload),
         loading: false,
       };
     case GET_TOTAL:

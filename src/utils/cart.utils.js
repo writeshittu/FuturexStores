@@ -1,31 +1,46 @@
 export const addItemToCart = (cart, itemToAdd) => {
+  let newCart;
   const existingCartItem = cart.find((item) => item.id === itemToAdd.id);
   if (existingCartItem) {
-    return cart.map((item) =>
+    newCart = cart.map((item) =>
       item.id === itemToAdd.id ? { ...item, quantity: item.quantity + 1 } : item
     );
+    localStorage.setItem(
+      "inCart",
+      JSON.stringify([...cart, { ...itemToAdd, quantity: 1 }])
+    );
+    return newCart;
   }
-  // localStorage.setItem(
-  //   "inCart",
-  //   JSON.stringify([...cart, { ...itemToAdd, quantity: 1 }])
-  // );
+
+  localStorage.setItem(
+    "inCart",
+    JSON.stringify([...cart, { ...itemToAdd, quantity: 1 }])
+  );
   return [...cart, { ...itemToAdd, quantity: 1 }];
 };
 
 export const decreaseItem = (cart, itemToRemove) => {
+  let decreasedCart;
   const existingCartItem = cart.find((item) => item.id === itemToRemove.id);
   if (existingCartItem.quantity === 1) {
-    return cart.filter((item) => item.id !== itemToRemove.id);
+    decreasedCart = cart.filter((item) => item.id !== itemToRemove.id);
+    localStorage.setItem("inCart", JSON.stringify(decreasedCart));
+    return decreasedCart;
   }
-  return cart.map((item) =>
+  decreasedCart = cart.map((item) =>
     item.id === itemToRemove.id
       ? { ...item, quantity: item.quantity - 1 }
       : item
   );
+  localStorage.setItem("inCart", JSON.stringify(decreasedCart));
+  return decreasedCart;
 };
 
-// export const filterItemFromCart = (cartItems, item) =>
-//   cartItems.filter(cartItem => cartItem.id !== item.id);
+export const filterItemFromCart = (cart, itemToAdd) => {
+  let deletedCart;
+  deletedCart = cart.filter((item) => item.id !== itemToAdd.id);
+  localStorage.setItem("inCart", JSON.stringify(deletedCart));
+};
 
 export const getCartLength = (cart) =>
   cart.reduce((allQty, item) => allQty + item.quantity, 0);

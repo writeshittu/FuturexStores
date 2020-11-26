@@ -16,3 +16,7 @@ body {
 i {
   cursor: pointer;
 }
+
+.ant-back-top-icon {
+  background-color: #007bff;
+}

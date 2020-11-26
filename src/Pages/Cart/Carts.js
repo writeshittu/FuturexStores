@@ -9,13 +9,16 @@ import "./carts.css";
 const Carts = () => {
   const productContext = useContext(ProductContext);
 
+  const { cart } = productContext;
+
   const {
-    deleteItem,
+    // deleteItem,
     decreaseCart,
     // amountToPay,
     addToCart,
+
     // TotalAmmountToPay,
-    cart,
+    // cart,
   } = productContext;
 
   // const [inCart, setinCart] = useState([]);
@@ -30,7 +33,7 @@ const Carts = () => {
       <div className="no-item text-center">
         <Link
           to="/"
-          className="p-3 no-itembtn bg-info text-white  "
+          className="p-3 no-itembtn bg-info text-white"
           style={{
             border: "1px solid",
             color: "#ffffff",
@@ -81,7 +84,9 @@ const Carts = () => {
                 </span>
               </td>
               <td>&#8358; {t.price * t.quantity}</td>
-              <td onClick={() => deleteItem(t.id)}>
+              <td
+              // onClick={() => deleteItem(t)}
+              >
                 <i
                   className="fas fa-trash fa-lg p-2"
                   style={{ color: "black" }}
@@ -99,9 +104,10 @@ const Carts = () => {
       <div className="row mt-4 mb-5 ">
         <Link
           to="/"
-          className="p-3 m-auto bg-info text-white  "
+          className="p-3 m-auto text-white  "
           style={{
             border: "1px solid",
+            backgroundColor: "#2dcc5d",
             color: "#ffffff",
             textDecoration: "none",
           }}
@@ -109,8 +115,8 @@ const Carts = () => {
           Continue Shopping
         </Link>
         <span
-          className="p-3 m-auto bg-info text-white "
-          style={{ border: "1px solid" }}
+          className="p-3 m-auto text-white "
+          style={{ border: "1px solid", backgroundColor: "#2dcc5d" }}
         >
           <PayWithStripeBtn price={localStorage.total} />
         </span>
