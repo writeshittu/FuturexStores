@@ -69,16 +69,6 @@ const ProductState = (props) => {
   //   setCartTotal(getCartTotal(cartItems));
   // }, [cartItems]);
 
-  //Filter contact
-  // const filterContact = (text) => {
-  //   dispatch({ type: FILTER_CONTACT, payload: text });
-  // };
-
-  //Clear filter
-  // const clearFilter = () => {
-  //   dispatch({ type: CLEAR_FILTER });
-  // };
-
   return (
     <ProductContext.Provider
       value={{

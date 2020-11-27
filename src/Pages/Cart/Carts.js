@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ProductContext from "../../Context/ProductItems/ProductContext";
-import { getAmountToPay } from "../../utils/cart.utils";
+// import { getAmountToPay } from "../../utils/cart.utils";
 import PayWithStripeBtn from "../../components/StripeGateway/PayWithStripeBtn";
 import "./carts.css";
 
@@ -12,7 +12,7 @@ const Carts = () => {
   const { cart } = productContext;
 
   const {
-    // deleteItem,
+    deleteItem,
     decreaseCart,
     // amountToPay,
     addToCart,
@@ -21,11 +21,20 @@ const Carts = () => {
     // cart,
   } = productContext;
 
-  // const [inCart, setinCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
+    let total;
+    cart.reduce(
+      (allQty, item) => (total = allQty + item.quantity * item.price),
+      0
+    );
+    // console.log(total);
+    setTotal(total);
+    localStorage.setItem("total", total);
+
     // setinCart(JSON.parse(window.localStorage.getItem("inCart")));
-    getAmountToPay(cart);
+    // getAmountToPay(cart);
   }, [cart]);
 
   if (cart.length <= 0) {
@@ -84,9 +93,7 @@ const Carts = () => {
                 </span>
               </td>
               <td>&#8358; {t.price * t.quantity}</td>
-              <td
-              // onClick={() => deleteItem(t)}
-              >
+              <td onClick={() => deleteItem(t)}>
                 <i
                   className="fas fa-trash fa-lg p-2"
                   style={{ color: "black" }}
@@ -99,7 +106,8 @@ const Carts = () => {
       <h4 className="text-right p-2">
         {" "}
         TOTAL : &#8358;
-        {localStorage.getItem("total") ? localStorage.getItem("total") : 0}{" "}
+        {total.toFixed(2)}{" "}
+        {/* {localStorage.getItem("total") ? localStorage.getItem("total") : 0}{" "} */}
       </h4>
       <div className="row mt-4 mb-5 ">
         <Link

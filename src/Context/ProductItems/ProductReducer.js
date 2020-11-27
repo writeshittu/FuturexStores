@@ -8,7 +8,7 @@ import {
 } from "../Types";
 import {
   addItemToCart,
-  filterItemFromCart,
+  // filterItemFromCart,
   decreaseItem,
   getAmountToPay,
   getCartLength,
@@ -33,8 +33,9 @@ export default (state, action) => {
     case DELETE_ITEM:
       return {
         ...state,
-        cart: filterItemFromCart(state.cart, action.payload),
-        TotalAmmountToPay: getAmountToPay(state.cart),
+        cart: state.cart.filter((item) => item.id !== action.payload.id),
+        // cart: filterItemFromCart(state.cart, action.payload),
+        // TotalAmmountToPay: getAmountToPay(state.cart),
       };
     case DECREASE_CART_ITEM:
       return {
