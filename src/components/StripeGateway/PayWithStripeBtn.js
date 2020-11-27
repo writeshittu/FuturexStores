@@ -1,5 +1,6 @@
 import React from "react";
 import PayWithStripe from "react-stripe-checkout";
+import "./stripebtn.css";
 
 const PayWithStripeBtn = ({ price, props }) => {
   const amountToPay = price * 100;
