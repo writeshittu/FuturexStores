@@ -5,10 +5,10 @@ import {
   DECREASE_CART_ITEM,
   GET_TOTAL,
   GET_CART_LENGTH,
+  NOTIFY,
 } from "../Types";
 import {
   addItemToCart,
-  // filterItemFromCart,
   decreaseItem,
   getAmountToPay,
   getCartLength,
@@ -25,6 +25,7 @@ export default (state, action) => {
         loading: false,
       };
     case ADD_TO_CARTS:
+    case NOTIFY:
       return {
         ...state,
         cart: addItemToCart(state.cart, action.payload),
@@ -34,14 +35,11 @@ export default (state, action) => {
       return {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload.id),
-        // cart: filterItemFromCart(state.cart, action.payload),
-        // TotalAmmountToPay: getAmountToPay(state.cart),
       };
     case DECREASE_CART_ITEM:
       return {
         ...state,
         cart: decreaseItem(state.cart, action.payload),
-        // inCart: decreaseItem(state.inCart, action.payload),
         loading: false,
       };
     case GET_TOTAL:

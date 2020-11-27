@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ProductContext from "../../Context/ProductItems/ProductContext";
-// import { getAmountToPay } from "../../utils/cart.utils";
 import PayWithStripeBtn from "../../components/StripeGateway/PayWithStripeBtn";
 import "./carts.css";
 
@@ -11,15 +10,7 @@ const Carts = () => {
 
   const { cart } = productContext;
 
-  const {
-    deleteItem,
-    decreaseCart,
-    // amountToPay,
-    addToCart,
-
-    // TotalAmmountToPay,
-    // cart,
-  } = productContext;
+  const { deleteItem, decreaseCart, addToCart } = productContext;
 
   const [total, setTotal] = useState(0);
 

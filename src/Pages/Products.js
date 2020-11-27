@@ -24,18 +24,6 @@ const Products = () => {
     );
   }
 
-  //   const [item, setItem] = useState([]);
-
-  //   useEffect(() => {
-  //     const fetchData = async () => {
-  //       const result = await axios("https://fakestoreapi.com/products");
-
-  //       setItem(result.data);
-  //     };
-
-  //     fetchData();
-  //   }, []);
-
   return (
     <div className="container mt-5" style={{ marginBottom: "100px" }}>
       <div className="row">
