@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CustomButton = ({ children }, placeholder) => {
+const CustomButton = ({ children, ...otherProps }) => {
   return (
     <div>
-      <input type="button" placeholder={placeholder} />
+      <input type="button" placeholder={placeholder} {...otherProps} />
     </div>
   );
 };
 
-CustomButton.propTypes = {};
+// CustomButton.propTypes = {};
 
 export default CustomButton;

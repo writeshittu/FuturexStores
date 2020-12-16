@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ProductContext from "../../Context/ProductItems/ProductContext";
 import PayWithStripeBtn from "../../components/StripeGateway/PayWithStripeBtn";
 import "./carts.css";
+import CartEmpty from "../Cart/cart-empty.svg";
 
 const Carts = () => {
   const productContext = useContext(ProductContext);
@@ -30,7 +31,11 @@ const Carts = () => {
 
   if (cart.length <= 0) {
     return (
-      <div className="no-item text-center">
+      <div className="no-item">
+        <div className="mt-2">
+          <img src={CartEmpty} alt="empty-cart" width="250px" />
+        </div>
+        <p className="d-block">Your Cart is empty</p>
         <Link
           to="/"
           className="p-3 no-itembtn bg-info text-white"

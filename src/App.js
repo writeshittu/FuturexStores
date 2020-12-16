@@ -5,6 +5,8 @@ import Products from "./Pages/Products";
 import Carts from "./Pages/Cart/Carts";
 import ProductState from "./Context/ProductItems/ProductState";
 import PayWithStripeBtn from "./components/StripeGateway/PayWithStripeBtn";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import CartContext from "./Context/Cart/CartContext";
 import "./App.css";
 
@@ -18,6 +20,7 @@ const App = () => {
         <Route exact path="/cart" component={Carts} />
         <Route exact path="/checkout" component={PayWithStripeBtn} />
       </Switch>
+      <ToastContainer />
       {/* </CartContext> */}
     </ProductState>
   );

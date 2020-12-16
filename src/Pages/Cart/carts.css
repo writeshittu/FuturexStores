@@ -4,15 +4,21 @@
 .pointer {
   cursor: pointer;
 }
-.no-item {
+/* .no-item {
   height: 100%;
   width: 100%;
   position: relative;
+} */
+.no-item {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  /* height: 100%; */
+  /* background-image: url("./cart-empty.svg"); */
 }
-
 .no-itembtn {
-  position: absolute;
-  top: 250px;
+  /* position: absolute; */
+  /* top: 250px; */
   margin: auto;
   border: 1px solid;
   color: #ffffff;

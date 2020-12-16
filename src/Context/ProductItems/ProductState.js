@@ -1,8 +1,6 @@
 import React, { useReducer } from "react";
 // import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import ProductContext from "./ProductContext";
 import productReducer from "./ProductReducer";
 import {
@@ -12,12 +10,12 @@ import {
   GET_TOTAL,
   DECREASE_CART_ITEM,
   GET_CART_LENGTH,
-  NOTIFY,
 } from "../Types";
 
 const ProductState = (props) => {
+  const inCart = [];
   const initialState = {
-    inCart: JSON.parse(window.localStorage.getItem("inCart")),
+    inCart: JSON.parse(window.localStorage.getItem(inCart)),
     cart: [],
     filtered: null,
     loading: true,
@@ -40,9 +38,7 @@ const ProductState = (props) => {
 
   //Add contact
   const addToCart = (item) => {
-    const err = toast("Added to cart");
-
-    dispatch({ type: ADD_TO_CARTS, payload: item, err });
+    dispatch({ type: ADD_TO_CARTS, payload: item });
 
     // contact.id = uuidv4();
   };

@@ -5,7 +5,6 @@ import {
   DECREASE_CART_ITEM,
   GET_TOTAL,
   GET_CART_LENGTH,
-  NOTIFY,
 } from "../Types";
 import {
   addItemToCart,
@@ -25,7 +24,6 @@ export default (state, action) => {
         loading: false,
       };
     case ADD_TO_CARTS:
-    case NOTIFY:
       return {
         ...state,
         cart: addItemToCart(state.cart, action.payload),

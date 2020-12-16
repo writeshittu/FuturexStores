@@ -1,13 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
-import ProductContext from "../../Context/ProductItems/ProductContext";
-
 import "./productcard.css";
 
-const ProductCard = ({ item }) => {
-  const productContext = useContext(ProductContext);
-  const { addToCart } = productContext;
-
+const ProductCard = ({ item, onClickToCart }) => {
   const { image, title, price } = item;
 
   return (
@@ -28,7 +23,10 @@ const ProductCard = ({ item }) => {
         </Card.Body>
 
         <div className=" p-0 mb-0">
-          <button className="col p-2 cart-btn" onClick={() => addToCart(item)}>
+          <button
+            className="col p-2 cart-btn"
+            onClick={() => onClickToCart(item)}
+          >
             Add to cart
           </button>
         </div>
