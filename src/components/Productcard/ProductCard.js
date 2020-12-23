@@ -6,7 +6,7 @@ const ProductCard = ({ item, onClickToCart }) => {
   const { image, title, price } = item;
 
   return (
-    <div className="col-lg-2 col-sm m-2 ">
+    <div className="col-lg-2 col-sm col-md-3 m-2 ">
       <Card className="cardShadow">
         <div className="embed-responsive embed-responsive-1by1">
           <img
