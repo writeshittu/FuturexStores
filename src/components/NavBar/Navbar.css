@@ -11,6 +11,84 @@ a {
   text-decoration: none;
   color: white !important;
 }
-/* i {
-  color: white;
+
+/* Hover Animation */
+.nav-contain {
+  background-color: #2dcc5d;
+}
+.nav-contain ul {
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-contain ul li {
+  list-style: none;
+  padding: 10px 20px;
+}
+.nav-contain ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.nav-contain ul li a:before {
+  content: "";
+  width: 1px;
+  transition: 0.6s;
+  left: 0;
+  bottom: -5px;
+  position: absolute;
+
+  height: 3px;
+}
+
+.nav-contain ul li:hover a:before {
+  width: 50%;
+  background: rgb(202, 16, 16);
+  transform: translateX(100%);
+}
+
+/* DropDown */
+
+.menu-btn {
+  background-color: transparent;
+  color: #fff;
+  padding: 15px;
+  cursor: pointer;
+  border: 1px solid #fff;
+  font-size: 15px;
+}
+.menu {
+  position: relative;
+  display: inline-block;
+  width: max-content;
+}
+.dropdown-items {
+  display: none;
+  top: 25px;
+  position: absolute;
+  background-color: #bb3b3b;
+  z-index: 1;
+  max-width: 150px;
+}
+.dropdown-items a:hover {
+  background-color: #fff;
+  color: aquamarine;
+}
+.menu:hover .dropdown-items {
+  display: block;
+}
+/* modal wrapper button */
+/* .button-wrapper {
+  position: relative;
+  z-index: 1;
 } */
+
+.other-modal {
+  position: relative;
+  z-index: 2;
+  background-color: #bb3b3b;
+  padding: 10px;
+}

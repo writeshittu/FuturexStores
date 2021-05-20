@@ -1,0 +1,68 @@
+.gameStart-container {
+  /* background-color: #e5e5e5; */
+  background: #4b0c57;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: -1;
+}
+.gameSessionOn {
+  background: url("../../GreedAsset/gameSessionBackground.svg");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  z-index: -1;
+}
+.gameStart-container .subtext {
+  font-size: 18px;
+
+  color: #cbcbff;
+}
+.contents::after {
+  /* background-color: #e5e5e5; */
+  position: absolute;
+  margin: 30px 15px;
+  width: inherit;
+  overflow: hidden;
+  height: 90vh;
+  content: url("../../GreedAsset/background-mesh.svg");
+  /* background: url("../../GreedAsset/background-mesh.svg"); */
+}
+.contents > * {
+  z-index: 4;
+  position: relative;
+}
+.contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.game_start-title {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 77px;
+  color: #ffc700;
+}
+
+input[type="number"] {
+  /* width: 100%; */
+  background-color: inherit;
+  padding: 6px 8px;
+  margin: 8px 0;
+  color: white;
+  border: 1px solid #ee8d94;
+}
+input[type="number"]:focus {
+  border: none;
+  outline: 1px solid #ee8d94;
+}
+.grid-text {
+  color: #ee8d94;
+  display: inline;
+  padding: 8px 10px;
+}

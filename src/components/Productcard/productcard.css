@@ -11,15 +11,17 @@
   transition: 0.3s;
 }
 .cart-btn:hover,
-:focus {
-  background-color: #007bff;
+.cart-btn:focus {
+  background-color: #bcd6f1;
   color: beige;
   border-style: none;
-  outline: none;
+  outline: 0;
 }
-
+.cart-btn:valid {
+  outline: 0;
+}
 .cart-btn:visited {
-  outline: none;
+  outline: 0;
 }
 
 .grow {

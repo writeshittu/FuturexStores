@@ -8,7 +8,7 @@
   /* box-shadow: #2dcc5d !important; */
 }
 .StripeCheckout > span:visited,
-:focus {
+span:focus {
   background-color: #283e4a !important;
   background: rgb(45, 204, 93) !important;
   /* background-image: linear-gradient(
