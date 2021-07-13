@@ -1,0 +1,55 @@
+.container {
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: 100% 1000px;
+}
+
+form {
+  background: #f3f5f7;
+  width: 300px;
+  margin: 0px auto;
+  padding: 5%;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.fieldGroup {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+
+label {
+  margin-bottom: 8px;
+  color: #425163;
+}
+
+input,
+select,
+textarea {
+  border: 2px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 8px 10px;
+  width: 100%;
+  color: #232327;
+}
+.hasError {
+  border-color: #f26969;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #10c761;
+}
+
+.errorMessage {
+  color: #f26969;
+  font-weight: bold;
+  font-size: 0.9em;
+  display: block;
+  text-align: right;
+  margin-top: 5px;
+}

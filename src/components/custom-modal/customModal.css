@@ -20,12 +20,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* color: rgb(213, 213, 213); */
+  color: rgb(213, 213, 213);
   background-color: rgba(124, 118, 118, 0.9);
   z-index: 1000;
-  /* overflow: scroll; */
+  overflow: auto;
 }
 
 .close-btn {
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: 1px solid #ccc;
+  padding: 8px;
 }

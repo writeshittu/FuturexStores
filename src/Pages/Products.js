@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { Skeleton } from "antd";
 import { BackTop } from "antd";
 import "antd/dist/antd.css";
+import ButtonRippleHover from "../components/CustomButton/ButtonRippleHover";
 
 const Products = () => {
   const productContext = useContext(ProductContext);
@@ -38,6 +39,7 @@ const Products = () => {
 
   return (
     <div className="container mt-5" style={{ marginBottom: "100px" }}>
+      <ButtonRippleHover />
       <div className="row">
         {items.map((item) => (
           <ProductCard

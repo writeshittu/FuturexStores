@@ -1,0 +1,17 @@
+.cont {
+  background-color: #aaa;
+  border-radius: 4px;
+  padding: 20px 10px;
+  color: aqua;
+  width: 300px;
+}
+.cont p:first-child {
+  color: red;
+}
+.text {
+  color: palegoldenrod;
+}
+#footItem {
+  padding: 10px;
+  color: rgb(219, 133, 20);
+}

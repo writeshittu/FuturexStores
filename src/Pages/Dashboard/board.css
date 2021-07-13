@@ -114,6 +114,7 @@
 @media (max-width: 556px) {
   .sidebar {
     /* width: 200px; */
+    display: none;
     height: auto;
   }
   .brand-name {

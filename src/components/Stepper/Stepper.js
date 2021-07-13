@@ -1,120 +1,98 @@
-import React, { useState } from "react";
-import NavBtn from "../CustomButton/CustomButton";
+import React, { useEffect, useState } from "react";
 import "./Stepper.css";
+import PropTypes from "prop-types";
 
-const Stepper = () => {
-  const [stepState, setStepState] = useState([
-    {
-      description: "create an account",
-      completed: false,
-      selected: true,
-      highlighted: true,
-    },
-    {
-      description: "create reg number",
-      completed: false,
-      selected: true,
-      highlighted: true,
-    },
-    {
-      description: "create phone detail",
-      completed: false,
-      selected: true,
-      highlighted: true,
-    },
-    {
-      description: "create ant",
-      completed: false,
-      selected: true,
-      highlighted: true,
-    },
-  ]);
-  const stepArray = [
-    "create an account",
-    "provide bvn",
-    "payment verify",
-    "payment vevfbgbfdfdfbrify",
-    "payment veffbfgbrify",
-    "payment verify",
-    "payment csd",
-    "payment verify",
-    "payment ve dfbdbrify",
-    "payment verify",
-    "payment verify",
-    "payment verify",
-    "done",
-    "registered",
-  ];
+const Stepper = ({ steps, currentStepNumber }) => {
+  const [stepToTake, setStepToTake] = useState([]);
+
+  useEffect(() => {
+    const stepsState = steps.map((step, index) => {
+      const stepObj = {};
+      stepObj.description = step;
+      stepObj.completed = false;
+      stepObj.highlighted = index === 0 ? true : false;
+      stepObj.selected = index === 0 ? true : false;
+
+      return stepObj;
+    });
+    const currentSteps = updateSteps(currentStepNumber - 1, stepsState);
+    setStepToTake(currentSteps);
+  }, [setStepToTake, steps, currentStepNumber]);
+
+  const updateSteps = (stepNumber, steps) => {
+    // console.log(currentStepNumber);
+    const newSteps = [...steps];
+    let stepCounter = 0;
+    while (stepCounter < newSteps.length) {
+      //  current step
+      if (stepCounter === stepNumber) {
+        newSteps[stepCounter] = {
+          ...newSteps[stepCounter],
+          highlighted: true,
+          selected: true,
+          completed: false,
+        };
+        stepCounter++;
+      } else if (stepCounter < stepNumber) {
+        newSteps[stepCounter] = {
+          ...newSteps[stepCounter],
+          highlighted: false,
+          selected: true,
+          completed: true,
+        };
+        stepCounter++;
+      }
+      //future step
+      else {
+        newSteps[stepCounter] = {
+          ...newSteps[stepCounter],
+          highlighted: false,
+          selected: false,
+          completed: false,
+        };
+        stepCounter++;
+      }
+    }
+    return newSteps;
+  };
+
   return (
-    <div className="containers">
-      <div className="progress-container">
-        {stepArray.map((step, index) => (
-          <div key={index} className="step-wrapper">
+    <div className="stepper-container-horizontal">
+      <div className="stepper-wrapper-horizontal">
+        {stepToTake.map((step, index) => (
+          <div key={index} className="step-wrapper ">
             <div
-              className={index !== stepArray.length - 1 && "progresss"}
-              id="progress"
-            ></div>
-
-            <div className="circle active"> {index + 1}</div>
-            <div className="step-description"> {step}</div>
-            <div className="step-description">
-              {" "}
-              "provide bvn", "payment verify", "payment vevfbgbfdfdfbrify",
-              "payment veffbfgbrify", "payment verify", "payment csd", "payment
-              verify", "payment ve dfbdbrify", "payment verify", "payment
-              verify", "payment verify",
+              className={`step-number ${
+                step.selected ? "step-number-active" : "step-number-disabled"
+              }`}
+            >
+              {step.completed ? <span>&#10003;</span> : index + 1}
             </div>
+            <small
+              className={`step-description ${
+                step.highlighted ? "step-description-active" : null
+              }`}
+            >
+              {" "}
+              {step["description"].description}
+            </small>
+            <div
+              className={
+                index !== stepToTake.length - 1
+                  ? `divider-line divider-line-${stepToTake.length}`
+                  : null
+              }
+            ></div>
           </div>
         ))}
       </div>
-      <NavBtn>Prev</NavBtn>
-      <NavBtn>Next</NavBtn>
     </div>
   );
 };
 
 export default Stepper;
 
-// import React, { useState } from "react";
-// import "./Stepper.css";
-// const Stepper = (props) => {
-//   const [data, setData] = useState([
-//     "create an account",
-//     "provide bvn",
-//     "payment verify",
-//     "done",
-//   ]);
-//   const stepArray = [
-//     "create an account",
-//     "provide bvn",
-//     "payment verify",
-//     "payment verify",
-//     "payment verify",
-//     "payment verify",
-//     "payment verify",
-//     "payment verify",
-//     "payment verify",
-//     "payment verify",
-//     "payment verify",
-//     "payment verify",
-//     "done",
-//     "registered",
-//   ];
-//   return (
-//     <div className="stepper-container-vertical">
-//       <div className="stepper-wrapper-vertical">
-//         {stepArray.map((step, index) => (
-//           <div key={index} className="step-wrapper">
-//             <div className="step-number"> {index + 1}</div>
-//             <div className="step-description"> {step}</div>
-//             <div className={index !== stepArray.length - 1 && "divider-line"}>
-//               {" "}
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Stepper;
+Stepper.propTypes = {
+  direction: PropTypes.string,
+  steps: PropTypes.array.isRequired,
+};

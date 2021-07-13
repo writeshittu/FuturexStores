@@ -29,6 +29,7 @@ const ProductState = (props) => {
   const getItems = async () => {
     try {
       const res = await axios("https://fakestoreapi.com/products");
+
       dispatch({ type: GET_ITEMS, payload: res.data });
     } catch (err) {
       console.log(err);

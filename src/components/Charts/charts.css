@@ -1,0 +1,93 @@
+#skills_section {
+  text-align: center;
+  margin-top: 20px;
+  /* display: grid;
+  place-items: center; */
+}
+
+.holder {
+  width: 60%;
+  margin: 20px auto;
+  margin-bottom: 200px;
+}
+.progresss {
+  width: 100%;
+  /* height: 16px; */
+  background-color: #ccc;
+  border-radius: 10px;
+}
+.progresss .progresss-bar {
+  /* width: 0%; */
+  /* opacity: 0; */
+  /* background-color: orangered; */
+  border-radius: 10px;
+  position: relative;
+  height: 100%;
+  transition: all 0.5s;
+}
+
+.progresss-bar span {
+  position: absolute;
+  top: 0px;
+  right: 0;
+  font-size: 0.6rem;
+  color: white;
+}
+
+.circular {
+  width: 200px;
+  height: 200px;
+  border: 20px solid red;
+  border-radius: 50%;
+}
+.contenttss {
+  transform: translate(40px, 70px);
+}
+
+.rail {
+  stroke: white;
+}
+.guage-progress {
+  stroke: #101010;
+}
+.percentage {
+  color: #101010;
+}
+.guage-container {
+  display: inline-block;
+  position: relative;
+  width: 70%;
+}
+.guage-container .guage {
+  position: relative;
+  display: block;
+}
+
+.guage-container .guage circle {
+  stroke-width: 15;
+}
+.guage-container .guage .rail {
+  fill: transparent;
+}
+.guage-container .center {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  font-weight: 300;
+  color: white;
+}
+.guage-container .center .percentage {
+  font-size: 2vw;
+}
+.guage-container .center .percentSymbol {
+  font-size: 0.8em;
+}
+.guage-container .center .value {
+  font-size: 1.9em;
+}
+span .value {
+  color: #333;
+}

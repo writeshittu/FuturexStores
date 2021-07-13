@@ -1,0 +1,92 @@
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+header {
+  background-image: url(https://images.unsplash.com/photo-1529316464151-695eb09f22a0?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDI2fFJfRnluLUd3dGx3fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+  background-size: cover;
+  background-position: center center;
+  /* height: 100vh; */
+}
+.nav_area {
+  height: 50px;
+  width: 1200px;
+  margin: 0 auto;
+  background: deepskyblue;
+}
+.nav_area ul li {
+  float: left;
+  position: relative;
+}
+.nav_area ul li a {
+  padding: 16px 65px;
+  display: block;
+  transition: 0.7s;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: sans-serif;
+  font-family: 700;
+}
+.nav_area > ul > li > a {
+  border-right: 1px solid #fff;
+}
+.nav_area > ul > li:last-child > a {
+  border-right: none;
+}
+.nav_area ul li:hover > a {
+  background: #333;
+}
+.nav_area ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0;
+  background: deepskyblue;
+  transition: 0.7s;
+}
+.nav_area ul li a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 4px;
+  width: 0;
+  background: deepskyblue;
+  transition: 0.7s;
+}
+.nav_area ul li a:hover::before,
+.nav_area ul li a:hover::after {
+  width: 100%;
+}
+.nav_area ul li ul {
+  position: absolute;
+  background: #333;
+  width: 208px;
+  transition: 0.7s;
+  opacity: 0;
+  visibility: hidden;
+  margin-top: -25px;
+}
+.nav_area ul li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0;
+}
+.nav_area ul li ul li {
+  width: 100%;
+}
+
+.nav_area ul li ul li a {
+  font-size: 14px;
+  text-transform: capitalize;
+  padding: 15px;
+  padding-bottom: 15px;
+}
+.nav_area ul li ul li ul {
+  left: 100%;
+}

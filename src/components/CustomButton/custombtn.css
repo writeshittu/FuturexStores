@@ -29,3 +29,33 @@
 .custom-button:focus {
   outline: none;
 }
+.ripple_button {
+  position: relative;
+  display: inline-flex;
+  padding: 10px 30px;
+  background: #363636;
+  color: #fff;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+.ripple_button::before {
+  content: "";
+  position: absolute;
+  /* top: 1px;
+  left: 2px; */
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-40%, -50%);
+  width: 0px;
+  height: 0px;
+  background: #2196f3;
+  border-radius: 50%;
+  transition: width 0.5s, height 0.5s;
+}
+.ripple_button:hover::before {
+  content: "";
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+}

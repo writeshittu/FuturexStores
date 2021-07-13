@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import Stepper from "../Stepper/Stepper";
 import "./Animate.css";
 
 const AminateBackground = () => {
+  const [data] = useState([
+    {
+      description: "create an account",
+      completed: false,
+      selected: false,
+      highlighted: false,
+    },
+    {
+      description: "create reg number",
+      completed: false,
+      selected: false,
+      highlighted: false,
+    },
+    {
+      description: "create phone detail",
+      completed: false,
+      selected: false,
+      highlighted: false,
+    },
+    {
+      description: "submit application",
+      completed: false,
+      selected: false,
+      highlighted: false,
+    },
+  ]);
   return (
     <div>
       <header className="header">
@@ -27,6 +54,7 @@ const AminateBackground = () => {
           <li></li>
         </ul>
       </div>
+      <Stepper steps={data} currentStepNumber={2} />
     </div>
   );
 };
