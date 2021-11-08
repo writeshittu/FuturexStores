@@ -1,0 +1,27 @@
+.input_wrapper {
+  border-radius: 0px;
+}
+.inputField {
+  border-radius: 0px;
+  border: 1px solid navy;
+  padding: 15px;
+}
+.inputLabel {
+  font-size: 12px;
+  color: gray;
+}
+.errorMessage {
+  font-size: 0.875rem;
+  color: #f01717;
+  font-style: italic;
+  display: none;
+}
+.inputField:invalid[focused="true"] {
+  border: #f01717 1px solid;
+}
+.inputField:focus {
+  border: lightgreen 1px solid;
+}
+.inputField:invalid[focused="true"] ~ .errorMessage {
+  display: block;
+}
